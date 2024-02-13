@@ -38,7 +38,29 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	var exampleVariable1 = 0;
 	var exampleVariable2 = 0;
 	var exampleVariable3 = 0;
-	
+
+
+	function anotherFunction()
+	{
+		exampleVariable1 = parseFloat(document.getElementById("firstInputBox").value);
+    		exampleVariable2 = parseFloat(document.getElementById("secondInputBox").value);
+	   for(let index = 0; index < exampleVariable1; index++)
+		{
+			var smileyImage = document.createElement(“img”);
+			smileyImage.src = “https://i.imgur.com/jctdkSS.png”;
+			document.getElementById(“content4”).appendChild(smileyImage);
+		}
+	   for(let index2 = 0; index2 < exampleVariable2; index2++)
+		{
+			var frownyImage = document.createElement(“img”);
+			smileyImage.src = “https://imgur.com/a/c8k7Ee2.png”;
+			document.getElementById(“content4”).appendChild(frownyImage);
+		}
+		
+		document.getElementById(“pidk”).innerHTML = “You inserted ” + exampleVariable1 + “ smiley faces and ” + exampleVariable2 + “ frowny faces!”;
+
+	}
+
 	function exampleFunction1()
 	{
 		// Assigns values to existing variables based on user input. The parseFloat() function converts string values to numerical values.
@@ -160,19 +182,33 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   <a href="#finalpage" onclick="exampleFunction1();" class="w3-btn w3-grey">Button 1</a>
   <a href="#finalpage" onclick="exampleFunction2();" class="w3-btn w3-grey">Button 2</a>
   <a href="#finalpage" onclick="exampleFunction3();" class="w3-btn w3-grey">Button 3</a>
+  <a href="#content3" onclick="anotherFunction();" class="w3-btn w3-purple">Button 3</a>
     
   </center>
 </div>  
-  
+
+	  
+<!--ALTERNATE SUBPAGE-->
+<div id="content3" class="page">
+	<!--Header.-->
+		<div id="header3" class="w3-container w3-flat-carrot">
+			<h1> I guess this is an alternate page </h1>
+		</div>
+
+<center>
+		<!--Main content of the page.-->
+<div id="content4" class="w3-container">
+<p id="pidk"> idk man here's some placeholder text </p>
+</div>
+  		
+		<!--A link that runs a function when clicked and takes the user to a new page.-->
+<a href=“content” onclick="resetVariables();" class="w3-btn w3-grey" >Return to Home Page</a>
+</center>
+
+</div>
   
   
 
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 	  
 	  
