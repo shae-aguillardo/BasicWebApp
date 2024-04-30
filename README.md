@@ -1,2 +1,2 @@
-# [UT Quiz]
-[Answering questions about UT]
+# UT Quiz
+Answering questions about UT
