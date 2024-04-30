@@ -1,0 +1,244 @@
+:root {
+  --color1: rgb(87, 150, 161);
+  --white: #fff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+body {
+  background: var(--greyLight-1);
+}
+
+.container {
+  height: 30rem;
+  width: 50%;
+  margin: 7rem auto;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+}
+
+.animation {
+  width: 100%;
+  height: 100%;
+  background-image: url('Infinity-1.4s-200px.gif');
+  background-size: contain;
+  display: none;
+}
+
+.header {
+  background-color: var(--greyDark);
+  text-align: center;
+  height: 6rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--greyLight-2);
+}
+
+.header>h4 {
+  color: #fff;
+}
+
+.quiz .header .quiz-header {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 0px;
+    padding: 0px;
+}
+
+.header>h4,
+.header>h1 {
+  font-size: 1.8rem;
+  padding-bottom: 0.8rem;
+  margin: 0;
+}
+
+.username-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header>p {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.username-display {
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 12px;
+}
+
+.question {
+  width: 80%;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 0.8rem 0;
+  margin: 1rem auto;
+  border-radius: 0.8rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--white), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+#playBtn {
+  display: none;
+}
+
+button,
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 7.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.9rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--greyDark);
+  color: #333;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+button:hover {
+  outline: none;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0.6rem 0;
+}
+
+.quiz-options div {
+  border: 0.5rem solid var(--greyLight-1);
+  padding: 7px;
+  margin: 0.7rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.container h1,
+.container h3 {
+  text-align: center;
+}
+
+.container>.header>.startH3 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-container,
+.password-container {
+  margin: 1rem auto;
+  width: 60%;
+}
+
+#signinForm {
+  margin: 20px auto;
+}
+
+.form-label {
+  font-size: 1.6rem;
+}
+
+input {
+  width: 100%;
+  font-size: 0.8rem;
+  padding: 0.7rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.form-check {
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+}
+
+.form-check input {
+  width: 0.8rem;
+  box-shadow: none;
+}
+
+.form-check-label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.sign-in {
+  margin-left: 9rem;
+}
+
+.sign-in a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.confirmUser {
+  height: 100%;
+}
+
+.start-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-game .header {
+  width: 100%;
+}
+
+#confirmUserForm {
+  margin: 2rem auto;
+}
+
+#signinForm,
+#confirmUserForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  height: 15rem;
+  width: 60%;
+  box-shadow: 2px 2px 15px var(--greyLight-2), -2px -2px 12px var(--greyLight-2);
+}
+
+#confirmUserForm label {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+#username {
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 31rem;
+    width: 70%;
+    margin: 1rem auto;
+  }
+
+  .container>.question {
+    width: 90%;
+    padding: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    height: 32rem;
+    width: 90%;
+  }
+}
