@@ -1,3 +1,4 @@
+<script>
 const questions = [
     {
         question: "A process is a _______.",
@@ -141,3 +142,5 @@ nextButton.addEventListener("click",()=>{
 });
 
 startQuiz();
+
+<script>
