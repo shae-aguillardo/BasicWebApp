@@ -94,7 +94,7 @@ function clearStatusClass(element) {
 
 // Question pool
 const questions = [{
-        question: "Will I get a good grade on this?",
+        question: "Will I get a good grade on this assignment?",
         answers: [{
                 text: 'Sure',
                 correct: true
