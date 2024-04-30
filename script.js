@@ -184,7 +184,7 @@ const questions = [{
                 correct: true
             },
             {
-                text: 'Bevo IIV visited capitol for a meet and greet',
+                text: 'Bevo VII visited capitol for a meet and greet',
                 correct: false
             },
             {
