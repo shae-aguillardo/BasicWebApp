@@ -1,165 +1,187 @@
-const quizData = [
-  {
-    question:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, reprehenderit?",
-    answers: ["Answer1 lorem10", "Answer2", "Answer3", "Answer4"],
-    correctAnswer: 0,
-  },
-  {
-    question: "What is the country in the world?",
-    answers: ["Answer1 lorem10", "Answer2", "Answer3", "Answer4"],
-    correctAnswer: 2,
-  },
-  // Add more questions here
-];
-const quizOptions = document.querySelector(".quiz-options");
-const optionsElements = document.querySelectorAll(".quiz-options div");
-const questionElement = document.querySelector(".question");
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+const questionContainerElement = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
 
-let score = 0;
-let currentQuestionIndex = 0;
-let exitBtnClicks = 0;
+let shuffledQuestions, currentQuestionIndex
 
-function startQuiz() {
-  const playBtn = document.getElementById("playBtn");
-  const exitBtn = document.getElementById("exitBtn");
-  const scoreElement = document.querySelector(".Scores .score");
+startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
+// //function to disappear welcome message
+document.querySelector(".start-btn").addEventListener("click", disappear);
 
-  function showQuestion() {
-    const currentQuestion = quizData[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
-    optionsElements.forEach((option, index) => {
-      option.textContent = currentQuestion.answers[index];
-    });
-    quizOptions.style.display = "grid";
-  }
+function disappear() {
+    document.querySelector(".welcome-message").style.display = "none";
+}
 
-  function checkAnswer(selectedIndex) {
-    const currentQuestion = quizData[currentQuestionIndex];
-    if (selectedIndex === currentQuestion.correctAnswer) {
-      score++;
-      scoreElement.textContent = score;
+function startGame() {
+    startButton.classList.add('hide')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove('hide')
+    setNextQuestion()
+}
+
+function setNextQuestion() {
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
+    })
+}
+
+function resetState() {
+    clearStatusClass(document.body)
+    nextButton.classList.add('hide')
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-      showQuestion();
+}
+
+function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove('hide')
     } else {
-      endQuiz();
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide')
     }
-  }
+}
 
-  function endQuiz() {
-    questionElement.textContent =
-      "Quiz completed! Your final score is " + score;
-    quizOptions.style.display = "none";
-    playBtn.style.display = "block";
-  }
-
-  function handleExitBtnClick() {
-    exitBtnClicks++;
-    if (exitBtnClicks === 1) {
-      quizOptions.style.display = "none";
-      playBtn.style.display = "block";
-      questionElement.textContent = "Quiz exited. Your final score is " + score;
-    } else if (exitBtnClicks === 2) {
-      currentQuestionIndex = 0;
-      score = 0;
-      scoreElement.textContent = score;
-      exitBtnClicks = 0;
-      const quizSection = document.querySelector(".quiz");
-      quizSection.style.display = "none";
-
-      simulateLoading();
-
-      setTimeout(() => {
-        const startGameSection = document.querySelector(".confirmUser");
-        startGameSection.style.display = "block";
-      }, 5000);
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
     }
-  }
-
-  playBtn.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    scoreElement.textContent = score;
-    showQuestion();
-    playBtn.style.display = "none";
-  });
-
-  exitBtn.addEventListener("click", () => {
-    handleExitBtnClick();
-  });
-
-  optionsElements.forEach((option, index) => {
-    option.addEventListener("click", () => {
-      checkAnswer(index);
-    });
-  });
-  const confirmUserForm = document.getElementById("confirmUserForm");
-  confirmUserForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    confirmUser();
-  });
 }
 
-//global showQuestion function
-function showQuestion() {
-  const currentQuestion = quizData[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-  optionsElements.forEach((option, index) => {
-    option.textContent = currentQuestion.answers[index];
-  });
-  quizOptions.style.display = "grid";
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
 }
 
-function confirmUser() {
-  const username = document.getElementById("username").value.trim();
-  if (username !== "") {
-    const startGameSection = document.querySelector(".confirmUser");
-    startGameSection.style.display = "none";
-    simulateLoading();
-    setTimeout(() => {
-      const quizSection = document.querySelector(".quiz");
-      quizSection.style.display = "block";
-      const scoreElement = document.querySelector(".Scores .score");
-      currentQuestionIndex = 0;
-      score = 0;
-      scoreElement.textContent = score;
-       playBtn.style.display = "none";
-      showQuestion();
-    }, 5000);
-  } else {
-    alert("Please enter a valid username.");
-  }
-}
+const questions = [{
+        question: "How many countries in the world?",
+        answers: [{
+                text: '313',
+                correct: false
+            },
+            {
+                text: '212',
+                correct: false
+            },
+            {
+                text: '256',
+                correct: false
+            },
+            {
+                text: '195',
+                correct: true
+            }
+        ]
+    },
+    {
+        question: 'When is National Mother Language Day?',
+        answers: [{
+                text: '5 January',
+                correct: false
+            },
+            {
+                text: '16 December',
+                correct: false
+            },
+            {
+                text: '21 February',
+                correct: true
+            },
+            {
+                text: '6 March',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'Where "The Holy Kaaba" is located?',
+        answers: [{
+                text: 'Saudi Arabia',
+                correct: true
+            },
+            {
+                text: 'Morocco',
+                correct: false
+            },
+            {
+                text: 'Italy',
+                correct: false
+            },
+            {
+                text: 'German',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'What is the sweetest language in the world?',
+        answers: [{
+                text: 'French',
+                correct: false
+            },
+            {
+                text: 'English',
+                correct: false
+            },
+            {
+                text: 'Bengali',
+                correct: true
+            },
+            {
+                text: 'Polish',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'Do you love Web Development?',
+        answers: [{
+                text: 'Yes, Of course',
+                correct: true
+            },
+            {
+                text: 'Neutral',
+                correct: true
+            },
+            {
+                text: 'No',
+                correct: true
+            },
+            {
+                text: "I'm Not Sure",
+                correct: true
+            }
+        ]
+    }
+]
 
-function simulateLoading() {
-  const animation = document.querySelector(".animation");
-  animation.style.display = "block";
-  setTimeout(() => {
-    animation.style.display = "none";
-  }, 5000);
-}
-
-function signInAndStartQuiz(event) {
-  // event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  const userDetails = {
-    email,
-    password,
-  };
-  localStorage.setItem("userDetails", JSON.stringify(userDetails));
-
-  window.location.href = "index2.html";
-}
-
-if (window.location.pathname === "/index.html") {
-  const signinForm = document.getElementById("signinForm");
-  signinForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    signInAndStartQuiz();
-  });
-}
-startQuiz();
+//special thanks to Dev Ed
