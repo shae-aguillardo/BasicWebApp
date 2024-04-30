@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Sign In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="container">
+    <div class="header">
+      <h1>Welcome to the Quiz!</h1>
+      <h3 class="startH3">Sign In to Start</h3>
+    </div>
+
+    <form id="signinForm" class="form">
+      <div class='email-container'>
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="password-container">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Remember Password</label>
+      </div>
+
+      <div class="sign-in">
+        <button type="submit" class="btn">Sign in</button>
+      </div>
+    </form>
+    
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
