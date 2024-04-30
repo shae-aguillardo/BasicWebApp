@@ -1,9 +1,11 @@
+// consts for buttons
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
+// shuffles questions within the question pool 
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
@@ -11,13 +13,15 @@ nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
 })
-// //function to disappear welcome message
+
+// Makes welcome message and image go away once start is pressed
 document.querySelector(".start-btn").addEventListener("click", disappear);
 
 function disappear() {
     document.querySelector(".welcome-message").style.display = "none";
 }
 
+// Shuffle questions 
 function startGame() {
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -26,11 +30,13 @@ function startGame() {
     setNextQuestion()
 }
 
+// Setting next question
 function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
+// Answering questions
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
@@ -45,6 +51,7 @@ function showQuestion(question) {
     })
 }
 
+
 function resetState() {
     clearStatusClass(document.body)
     nextButton.classList.add('hide')
@@ -53,6 +60,7 @@ function resetState() {
     }
 }
 
+// Selecting answers and adding to question index for shuffling for new questions
 function selectAnswer(e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
@@ -68,6 +76,7 @@ function selectAnswer(e) {
     }
 }
 
+// Correct and Wrong results
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
@@ -82,6 +91,8 @@ function clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 
+
+// Question pool
 const questions = [{
         question: "Will I get a good grade on this?",
         answers: [{
@@ -184,4 +195,4 @@ const questions = [{
     }
 ]
 
-//special thanks to Dev Ed
+
