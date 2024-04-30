@@ -83,102 +83,102 @@ function clearStatusClass(element) {
 }
 
 const questions = [{
-        question: "How many countries in the world?",
+        question: "Will I get a good grade on this?",
         answers: [{
-                text: '313',
-                correct: false
-            },
-            {
-                text: '212',
-                correct: false
-            },
-            {
-                text: '256',
-                correct: false
-            },
-            {
-                text: '195',
-                correct: true
-            }
-        ]
-    },
-    {
-        question: 'When is National Mother Language Day?',
-        answers: [{
-                text: '5 January',
-                correct: false
-            },
-            {
-                text: '16 December',
-                correct: false
-            },
-            {
-                text: '21 February',
+                text: 'Sure',
                 correct: true
             },
             {
-                text: '6 March',
-                correct: false
-            }
-        ]
-    },
-    {
-        question: 'Where "The Holy Kaaba" is located?',
-        answers: [{
-                text: 'Saudi Arabia',
+                text: 'Yeah',
                 correct: true
             },
             {
-                text: 'Morocco',
-                correct: false
-            },
-            {
-                text: 'Italy',
-                correct: false
-            },
-            {
-                text: 'German',
-                correct: false
-            }
-        ]
-    },
-    {
-        question: 'What is the sweetest language in the world?',
-        answers: [{
-                text: 'French',
-                correct: false
-            },
-            {
-                text: 'English',
-                correct: false
-            },
-            {
-                text: 'Bengali',
-                correct: true
-            },
-            {
-                text: 'Polish',
-                correct: false
-            }
-        ]
-    },
-    {
-        question: 'Do you love Web Development?',
-        answers: [{
-                text: 'Yes, Of course',
-                correct: true
-            },
-            {
-                text: 'Neutral',
+                text: 'Show mercy',
                 correct: true
             },
             {
                 text: 'No',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'How many questions does this site cycle through?',
+        answers: [{
+                text: '4',
+                correct: false
+            },
+            {
+                text: '6',
+                correct: false
+            },
+            {
+                text: '5',
                 correct: true
             },
             {
-                text: "I'm Not Sure",
+                text: '7',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'What was the image on the starting page?',
+        answers: [{
+                text: 'Bevo',
                 correct: true
+            },
+            {
+                text: 'Cow',
+                correct: false
+            },
+            {
+                text: 'Moose',
+                correct: false
+            },
+            {
+                text: 'Sheep',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'The current Bevo alive right now is Bevo ____',
+        answers: [{
+                text: 'XIV',
+                correct: false
+            },
+            {
+                text: 'XIX',
+                correct: false
+            },
+            {
+                text: 'XVI',
+                correct: false
+            },
+            {
+                text: 'XV',
+                correct: true
+            }
+        ]
+    },
+    {
+        question: 'One truth, 3 lies: Choose the correct one',
+        answers: [{
+                text: 'Bevo X passed away due to illness',
+                correct: false
+            },
+            {
+                text: 'Bevo I was eaten at a football banquet',
+                correct: true
+            },
+            {
+                text: 'Bevo IIV visited capitol for a meet and greet',
+                correct: false
+            },
+            {
+                text: "Bevo III almost ate a squirrel",
+                correct: false
             }
         ]
     }
