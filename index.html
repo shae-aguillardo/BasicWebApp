@@ -19,17 +19,16 @@ Followed tutorial online because hard to follow with app assignment 3
     <title> Silly Quiz by Shae Aguillardo</title>
 
 </head>
-
+<!-- Body of the main starting page -->
 <body>
-    <!-- Body of the main starting page -->
-    <div class="container">
+    <div class="container">        <!-- Container for quiz -->
         <div class="centered">
             <div class="welcome-message">
-                <img src="https://imgur.com/7IkntUq.png" width="150" alt="BEVO">
-                <h1>Silly Quiz by Shae :)</h1>
+                <img src="https://imgur.com/7IkntUq.png" width="150" alt="BEVO">     <!-- Bevo image -->
+                <h1>Silly Quiz by Shae :)</h1>                                        <!-- Text for starting page -->
                 <p>Click "Start" to answer some questions!</p>
             </div>
-            <div id="question-container" class="hide">
+            <div id="question-container" class="hide">                        <!-- Question and button formatting -->
                 <div id="question">Question</div>
                 <div id="answer-buttons" class="btn-grid">
                     <button class="btn">Answer 1</button>
@@ -37,15 +36,15 @@ Followed tutorial online because hard to follow with app assignment 3
                     <button class="btn">Answer 3</button>
                     <button class="btn">Answer 4</button>
                 </div>
-            </div>
-            <div class="controls">
+            </div>    
+            <div class="controls">                                                 <!-- Start and Next buttons during questions -->
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="next-btn" class="next-btn btn hide">Next</button>
             </div>
         </div>
     </div>
     
-    <!-- Main JavaScript Source -->
+    <!-- Getting JS code from another file -->
     <script src="script.js"></script>
     </script>
 </body>
